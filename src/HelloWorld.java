@@ -35,5 +35,7 @@ public class HelloWorld {
         highNumber += 1;
         System.out.println(highNumber);
 
+        double pi = 3.14159;
+
     }
 }
