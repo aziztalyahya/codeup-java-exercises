@@ -14,6 +14,7 @@ public class MethodsExercises {
         int userInput = getInteger(1, 10);
 
         System.out.println(factorial(userInput));
+        dice();
     }
 
     public static int Addition (int num1,int num2){
@@ -64,5 +65,39 @@ public class MethodsExercises {
     }
 
 
+    public static int dice(){
+        Scanner scan = new Scanner(System.in).useDelimiter("\n");
+        System.out.println("How many sides are on the Dice?");
+        int userInput =scan.nextInt();
+        int sidesOfDice1 = userInput;
+        int sidesOfDice2 = userInput;
+        System.out.println("Would you like to roll the dice? y or n");
+        String rollDice = scan.next();
+        if (rollDice.equalsIgnoreCase("y")){
+            boolean answer = false;
 
+            do {
+                int dice1Rolled = (int) (Math.random() * sidesOfDice1) +1;
+                int dice2Rolled = (int) (Math.random() * sidesOfDice2) +1;
+                System.out.println(dice1Rolled);
+                System.out.println(dice2Rolled);
+                System.out.println("Would you like to roll again?");
+                String reRoll = scan.next();
+                if (reRoll.equalsIgnoreCase("y")){
+                    answer = true;
+                } if (reRoll.equalsIgnoreCase("n")){
+                    answer = false;
+                    }
+                }while (answer);
+
+        } else if(rollDice.equalsIgnoreCase("n")) {
+            System.out.println("Okay then, program ending");
+        } else {
+            System.out.println("Not a valid input, restarting program");
+            dice();
+        }
+
+
+        return sidesOfDice1;
+    }
 }
