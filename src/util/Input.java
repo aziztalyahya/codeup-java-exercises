@@ -5,12 +5,20 @@ import java.util.Scanner;
 public class Input {
     private Scanner scanner = new Scanner(System.in).useDelimiter("\n");
 
+    public String Input(){
+        String userInput = getString();
+        return userInput;
+    }
+
     public String getString(){
+        System.out.println("Please enter your input.");
         String userInput = scanner.next();
+        System.out.println(userInput);
         return userInput;
     }
 
     public boolean yesNo(){
+        System.out.println("Would you like to continue? y or n");
         String userInput = scanner.next();
         if (userInput.equalsIgnoreCase("y") || userInput.equalsIgnoreCase("yes")){
             return true;
@@ -25,23 +33,29 @@ public class Input {
         if (userInput >= min && userInput<= max){
             return userInput;
         } else{
+            System.out.println("The number must be between" + min + " and " + max);
             return getInt(min, max);
         }
     }
 
     public int getInt(){
-        System.out.println("Please enter a number: ");
+        System.out.println("Please enter an integer");
         int userInput = scanner.nextInt();
         return userInput;
     }
 
-    public double getInt(double min, double max){
+    public int getInt(String prompt){
+        System.out.println(prompt);
+        return scanner.nextInt();
+    }
+
+    public double getDouble(double min, double max){
         System.out.println("Please enter a number within the min and max parameters");
-        double userInput = scanner.nextInt();
+        double userInput = scanner.nextDouble();
         if (userInput >= min && userInput<= max){
             return userInput;
         } else{
-            return getInt(min, max);
+            return getDouble(min, max);
         }
     }
 
@@ -49,6 +63,11 @@ public class Input {
         System.out.println("Please enter a number: ");
         double userInput = scanner.nextDouble();
         return userInput;
+    }
+
+    public double getDouble(String prompt){
+        System.out.println(prompt);
+        return scanner.nextDouble();
     }
 
 }

@@ -4,11 +4,11 @@ public class Person {
     public Person(String name){
         setName(name);
     }
-
+    // GETTER => getes a value
     public String getName(){
         return name;
     }
-
+    // setter = >sets a value
     public void setName(String name){
         this.name = name;
     }
