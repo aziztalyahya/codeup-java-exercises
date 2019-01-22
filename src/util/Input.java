@@ -13,8 +13,7 @@ public class Input {
         return userInput;
     }
 
-    public String getString() {
-        return scanner.next();
+    public String getString() { return scanner.next();
     }
 
     public String getString(String prompt) {
@@ -44,10 +43,28 @@ public class Input {
     }
 
     public int getInt() {
-        return scanner.nextInt();
+        // we need to gracefully handle exceptions
+        String userInput;
+        int userInt;
+
+        try {
+            userInput = scanner.next();
+            userInt = Integer.valueOf(userInput);
+            return userInt;
+        } catch (Exception e){
+            System.out.println("Please make sure input is a valid integer");
+            return getInt();
+        }
+
     }
     public int getInt(String prompt) {
         System.out.println(prompt);
+        try{
+            Integer.valueOf(scanner.next());
+        } catch (Exception e){
+            System.out.println("catch message: " + e.getMessage());
+            getInt();
+        }
         return getInt();
     }
 
@@ -63,7 +80,16 @@ public class Input {
     }
 
     public double getDouble() {
-        return scanner.nextDouble();
+        String userInput;
+
+        try {
+            userInput = scanner.next();
+            return Double.valueOf(userInput);
+
+        } catch (Exception e){
+            System.out.println("Please enter a valid double");
+            return getDouble();
+        }
     }
 
     public double getDouble(String prompt) {
